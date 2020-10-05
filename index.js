@@ -16,7 +16,7 @@ client.connect(err => {
   const registers = client.db("volunteer-network").collection("registers");
 app.post('/addWorks',(req,res)=>{
   const work=req.body;
-  works.insertOne(work)
+  works.insertMany(work)
   .then(result=>{
     res.send(result.insertedCount>0)
   })
@@ -70,4 +70,4 @@ app.delete('/deleteEvent/:id',(req,res)=>{
 })
 });
 
-app.listen(process.env.PORT || 5000)
+app.listen(7000)
