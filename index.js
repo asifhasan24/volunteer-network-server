@@ -3,8 +3,11 @@ const bodyParser=require('body-parser');
 const cors =require('cors');
 const { ObjectID } = require('mongodb');
 
+
 const MongoClient = require('mongodb').MongoClient;
+require('dotenv').config()
 const uri = "mongodb+srv://asifhasan:asif2189@cluster0.gbfwa.mongodb.net/volunteer-network?retryWrites=true&w=majority";
+const port = 7000
 const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true });
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -70,4 +73,4 @@ app.delete('/deleteEvent/:id',(req,res)=>{
 })
 });
 
-app.listen(7000)
+app.listen(process.env.PORT || port)
