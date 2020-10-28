@@ -1,4 +1,4 @@
-WEBSITE : https://zen-carson-9dd0e0.netlify.app/
+Website : https://zen-carson-9dd0e0.netlify.app/
 
 feature : 
     A full stack website where every data loads from Database. 
