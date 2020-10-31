@@ -10,18 +10,18 @@ const uri = "mongodb+srv://asifhasan:asif2189@cluster0.gbfwa.mongodb.net/volunte
 const port = 7000
 
 
-const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true });
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(cors());
- 
+const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true }); 
 client.connect(err => {
-  const works = client.db("volunteer-network").collection("works");
-  const registers = client.db("volunteer-network").collection("registers");
+  const works = client.db("volunteer").collection("works");
+  const registers = client.db("volunteer").collection("registers");
+  console.log('connected')
 app.post('/addWorks',(req,res)=>{
   const work=req.body;
-  works.insertMany(work)
+  works.insertOne(work)
   .then(result=>{
     res.send(result.insertedCount>0)
   })
